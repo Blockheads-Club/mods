@@ -1,0 +1,19 @@
+# DRAFT placeholder: the URL is fake until mod-sdk publishes a release. The sha256 and size match
+# testdata/packages/hello-lua-0.1.0.bhmod, so the tooling can be tested locally (see README, "Test locally").
+id = "hello-lua"
+name = "Hello (Lua)"
+description = "Adds /hello and greets players who join. Example Luau mod from the SDK."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk"
+tags = ["example", "chat"]
+draft = true
+
+[[versions]]
+version = "0.1.0"
+url = "https://example.invalid/TODO/hello-lua-0.1.0.bhmod"
+sha256 = "f5ba606a82aabf2406b9c1476c76e5cc7162e6f0abb05a00d2350a35190bca53"
+size = 1408
+sides = ["server"]
+api = "^0.1"
+permissions = { players = ["chat"] }
+published = 2026-10-21
