@@ -1,0 +1,3 @@
+# GitHub only accepts code owners with write access, so maintainers own every file.
+# Mod authors own their entries through the `owners` field, which CI (bhmod index validate) enforces.
+* @Blockheads-Club/maintainers
