@@ -1,0 +1,93 @@
+# On main: mirror every published package as a release asset of this repo, build index.json with the mirror links,
+# sign it with the INDEX_SIGNING_KEY secret (minisign, ed25519) and publish both to GitHub Pages
+# (https://blockheads-club.github.io/mods/index.json). Draft entries are never published.
+name: Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  # Blockheads-Club/mod-sdk does not exist yet; this runs once it is public.
+  MOD_SDK_REPO: https://github.com/Blockheads-Club/mod-sdk
+  MOD_SDK_REF: dev
+  MAX_PACKAGE_BYTES: "33554432"
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install bhmod
+        run: cargo install --locked --git "$MOD_SDK_REPO" --branch "$MOD_SDK_REF" bhmod --root "$RUNNER_TEMP/bhmod"
+      - name: Mirror packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/bhmod/bin/bhmod" index build --repo . -o "$RUNNER_TEMP/all.json"
+          jq -r '.mods[] | .id as $id | .versions[] | [$id, .version, .url, .sha256] | @tsv' "$RUNNER_TEMP/all.json" |
+          while IFS=$'\t' read -r id version url sha; do
+            tag="$id-$version"
+            if gh release view "$tag" > /dev/null 2>&1; then continue; fi
+            file="$RUNNER_TEMP/$tag.bhmod"
+            curl -sSfL --proto '=https' --max-redirs 5 --max-filesize "$MAX_PACKAGE_BYTES" --max-time 120 "$url" -o "$file"
+            echo "$sha  $file" | sha256sum -c -
+            gh release create "$tag" "$file" --target "$GITHUB_SHA" --title "$id $version" \
+              --notes "Mirror of $url (sha256 $sha). Kept by the index in case the original link breaks."
+          done
+
+  build:
+    needs: mirror
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install bhmod
+        run: cargo install --locked --git "$MOD_SDK_REPO" --branch "$MOD_SDK_REF" bhmod --root "$RUNNER_TEMP/bhmod"
+      - name: Build index.json
+        run: |
+          mkdir -p _site
+          "$RUNNER_TEMP/bhmod/bin/bhmod" index build --repo . -o _site/index.json \
+            --mirror-base "https://github.com/${{ github.repository }}/releases/download"
+      - name: Sign index.json
+        env:
+          INDEX_SIGNING_KEY: ${{ secrets.INDEX_SIGNING_KEY }}
+          INDEX_SIGNING_KEY_PASSWORD: ${{ secrets.INDEX_SIGNING_KEY_PASSWORD }}
+        run: |
+          if [ -z "$INDEX_SIGNING_KEY" ]; then echo "::error::INDEX_SIGNING_KEY is not set"; exit 1; fi
+          password=()
+          if [ -n "$INDEX_SIGNING_KEY_PASSWORD" ]; then password=(--password-env INDEX_SIGNING_KEY_PASSWORD); fi
+          "$RUNNER_TEMP/bhmod/bin/bhmod" index sign _site/index.json --key-env INDEX_SIGNING_KEY "${password[@]}"
+          if [ -f keys/index.pub ]; then
+            "$RUNNER_TEMP/bhmod/bin/bhmod" index verify _site/index.json --pubkey keys/index.pub
+            cp keys/index.pub _site/index.pub
+          else
+            echo "::warning::keys/index.pub is missing; the signature was not verified"
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

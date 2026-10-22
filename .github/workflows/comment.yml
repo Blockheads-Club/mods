@@ -1,0 +1,47 @@
+# Posts the result of validate.yml on the pull request (one comment, updated in place) and adds its labels.
+# Runs in the base repo context with write access, so it treats the artifact as untrusted data: the PR number must
+# be numeric and only known labels are applied.
+name: Comment
+
+on:
+  workflow_run:
+    workflows: [Validate]
+    types: [completed]
+
+permissions:
+  pull-requests: write
+  issues: write
+  actions: read
+
+jobs:
+  comment:
+    if: github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: index-check
+          path: out
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Comment and label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          pr="$(head -c 16 out/pr.txt | tr -d '[:space:]')"
+          case "$pr" in ''|*[!0-9]*) echo "bad PR number"; exit 1;; esac
+          marker='<!-- bhmod-index-check -->'
+          { echo "$marker"; head -c 60000 out/report.md; } > body.md
+          id="$(gh api "repos/$REPO/issues/$pr/comments" --paginate --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -n1)"
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@body.md > /dev/null
+          else
+            gh pr comment "$pr" --repo "$REPO" --body-file body.md
+          fi
+          while read -r label; do
+            case "$label" in
+              new-mod|needs-security-review|yank) gh pr edit "$pr" --repo "$REPO" --add-label "$label" ;;
+              *) echo "ignoring label $label" ;;
+            esac
+          done < out/labels.txt

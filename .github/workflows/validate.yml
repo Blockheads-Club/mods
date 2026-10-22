@@ -1,0 +1,103 @@
+# Checks pull requests that add or change mod entries. Runs with a read-only token: the PR comment and labels are
+# posted by comment.yml (workflow_run), so code from forks never gets write access. Nothing from the PR is executed:
+# the PR checkout is only read as data by bhmod, built from Blockheads-Club/mod-sdk.
+name: Validate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # Blockheads-Club/mod-sdk does not exist yet; this runs once it is public.
+  MOD_SDK_REPO: https://github.com/Blockheads-Club/mod-sdk
+  MOD_SDK_REF: dev
+  LUAU_VERSION: "0.743"
+  MAX_PACKAGE_BYTES: "33554432"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      needs_review: ${{ steps.check.outputs.needs_review }}
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v4
+        with:
+          path: head
+          persist-credentials: false
+      - name: Check out the base branch
+        uses: actions/checkout@v4
+        with:
+          path: base
+          ref: ${{ github.base_ref || github.ref }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install bhmod
+        run: cargo install --locked --git "$MOD_SDK_REPO" --branch "$MOD_SDK_REF" bhmod --root "$RUNNER_TEMP/bhmod"
+      - name: Install Luau
+        run: |
+          curl -sSfL "https://github.com/luau-lang/luau/releases/download/${LUAU_VERSION}/luau-ubuntu.zip" -o "$RUNNER_TEMP/luau.zip"
+          unzip -q "$RUNNER_TEMP/luau.zip" -d "$RUNNER_TEMP/luau"
+      - name: Download new packages
+        run: |
+          mkdir -p "$RUNNER_TEMP/packages"
+          "$RUNNER_TEMP/bhmod/bin/bhmod" index downloads --repo head --base base | while read -r url file; do
+            case "$file" in *[!A-Za-z0-9._+-]*|.*) echo "bad file name $file"; exit 1;; esac
+            echo "downloading $url"
+            curl -sSfL --proto '=https' --max-redirs 5 --max-filesize "$MAX_PACKAGE_BYTES" --max-time 120 \
+              "$url" -o "$RUNNER_TEMP/packages/$file" || echo "::warning::could not download $url"
+          done
+      - name: Validate
+        id: check
+        env:
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          mkdir -p out
+          author=()
+          if [ -n "$AUTHOR" ]; then author=(--author "$AUTHOR"); fi
+          set +e
+          "$RUNNER_TEMP/bhmod/bin/bhmod" index validate --repo head --base base "${author[@]}" \
+            --packages "$RUNNER_TEMP/packages" --luau-compile "$RUNNER_TEMP/luau/luau-compile" \
+            --report out/report.md --labels out/labels.txt
+          code=$?
+          set -e
+          echo "${{ github.event.pull_request.number }}" > out/pr.txt
+          if grep -qx needs-security-review out/labels.txt; then
+            echo "needs_review=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_review=false" >> "$GITHUB_OUTPUT"
+          fi
+          cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+      - name: Keep the report for the comment workflow
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-check
+          path: out/
+          retention-days: 7
+
+  security-review:
+    name: Security review
+    needs: validate
+    if: always() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Native code or new permissions need a maintainer
+        env:
+          NEEDS_REVIEW: ${{ needs.validate.outputs.needs_review }}
+          APPROVED: ${{ contains(github.event.pull_request.labels.*.name, 'security-approved') }}
+        run: |
+          if [ "$NEEDS_REVIEW" = "true" ] && [ "$APPROVED" != "true" ]; then
+            echo "::error::This mod uses native code or adds permissions. A maintainer must review it and add the label security-approved."
+            exit 1
+          fi
+          echo "No security review needed, or approved."
