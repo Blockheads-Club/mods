@@ -16,7 +16,6 @@ permissions:
   contents: read
 
 env:
-  # Blockheads-Club/mod-sdk does not exist yet; this runs once it is public.
   MOD_SDK_REPO: https://github.com/Blockheads-Club/mod-sdk
   MOD_SDK_REF: dev
   LUAU_VERSION: "0.743"
@@ -91,13 +90,13 @@ jobs:
     if: always() && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Native code or new permissions need a maintainer
+      - name: New mods, native code and new permissions need a maintainer
         env:
           NEEDS_REVIEW: ${{ needs.validate.outputs.needs_review }}
           APPROVED: ${{ contains(github.event.pull_request.labels.*.name, 'security-approved') }}
         run: |
           if [ "$NEEDS_REVIEW" = "true" ] && [ "$APPROVED" != "true" ]; then
-            echo "::error::This mod uses native code or adds permissions. A maintainer must review it and add the label security-approved."
+            echo "::error::New mods, native code and added permissions need a security review. A maintainer must read the code and add the label security-approved."
             exit 1
           fi
           echo "No security review needed, or approved."

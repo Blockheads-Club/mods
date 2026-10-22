@@ -17,11 +17,9 @@
 used to test the tools. Servers and clients can't load mods yet; see the
 [mod SDK](https://github.com/Blockheads-Club/mod-sdk) for what works today.
 
-> The `Blockheads-Club/mods` and `Blockheads-Club/mod-sdk` GitHub repos don't exist yet. The workflows here install
-> the `bhmod` tool from `Blockheads-Club/mod-sdk`, so they will only run once that repo is public.
-
-Every mod has one file here: `mods/<first letter>/<id>.toml`. CI checks each pull request, a maintainer approves
-it, and on merge the list is published as a signed `index.json`. The game, the
+Every mod has one file here: `mods/<first letter>/<id>.toml`. CI checks each pull request, a maintainer reviews
+it, and on merge into `dev` the list is published as `index.json` at
+[`blockheads.club/mods/index.json`](https://blockheads.club/mods/index.json). The game, the
 [Patcher](https://github.com/Blockheads-Club/blockheads-patcher), the [website](https://blockheads.club/mods) and the
 [server](https://github.com/Blockheads-Club/blockheads-server) read that file.
 
@@ -62,7 +60,7 @@ Full format: [`index-entry.schema.json`](https://github.com/Blockheads-Club/mod-
 ## 📏 Rules
 - One mod per pull request.
 - Published versions are never edited or removed. You may only add new versions at the end, or `yanked = true`.
-- Only people in a mod's `owners` may change it. A new mod is approved by a maintainer.
+- Only people in a mod's `owners` may change it. Every new mod is security-reviewed and approved by a maintainer.
 - The download must stay online and match `sha256` and `size`. On merge, CI keeps a copy as a release asset of this
   repo (`mirror`), in case the original link breaks.
 - The `mod.toml` inside the package must say the same as your entry (id, version, sides, dependencies, permissions).
@@ -83,10 +81,11 @@ The [`validate`](.github/workflows/validate.yml) workflow runs `bhmod index vali
 6. It comments the permission list and what changed since the last version.
 
 ### Security review
-The label **`needs-security-review`** is added when a version asks for `native` (unsandboxed code: native hooks,
-`.so` files, JVM), when an update adds a permission, or when a new mod asks for `net-http`. The check
+The label **`needs-security-review`** is added to **every new mod** (the first submission of an id), when a version
+asks for `native` (unsandboxed code: native hooks, `.so` files, JVM), and when an update adds a permission. The check
 **Security review** then stays red until a maintainer has read the code and adds the label `security-approved`.
-New mods also get `new-mod` and need one maintainer approval.
+New mods also get `new-mod`. Updates that keep the same permissions and use no native code need no review, only the
+usual owner check.
 
 ---
 
@@ -104,11 +103,18 @@ are included. The test packages are the SDK's `hello-lua` and `hello-rust` examp
 
 ---
 
-## 🔑 Signing
-`publish.yml` signs `index.json` with minisign (ed25519) using the repo secret `INDEX_SIGNING_KEY` (the secret key
-file's text; optional `INDEX_SIGNING_KEY_PASSWORD`). The public key goes in `keys/index.pub` and is shipped with the
-game, Patcher, website and server. Create the pair once with `bhmod index keygen --dir <private folder>`. No key
-exists yet.
+## 🌐 Publishing
+`dev` is the default and release branch (as in every Blockheads Club repo); there is no `main`. On every push to
+`dev`, [`publish.yml`](.github/workflows/publish.yml):
+
+1. keeps a copy of every package as a release asset of this repo (`mirror`),
+2. builds `index.json` and uploads it to the release [`index`](https://github.com/Blockheads-Club/mods/releases/tag/index),
+   replacing the old file,
+3. calls the website's deploy hook (repo secret `WEBSITE_DEPLOY_HOOK`; skipped with a notice when it is not set).
+
+The website build downloads that file and serves it at `https://blockheads.club/mods/index.json`. The index is not
+signed: it is fetched over HTTPS, and every version's `sha256` and `size` are checked by CI, the game, the Patcher
+and the server before a package is used.
 
 ---
 

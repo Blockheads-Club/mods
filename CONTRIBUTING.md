@@ -6,9 +6,10 @@ Thanks for sharing your mod! The steps are in the [README](README.md#-submit-a-m
 - New versions go at the end of `[[versions]]`; never edit a published version. To withdraw one, add `yanked = true`.
 - `sha256` and `size` must match the file at `url` exactly (`bhmod pack` prints the hash).
 - Run the checks yourself before you push: `bhmod check --index my-mod-1.0.0.bhmod`, and for the whole entry
-  `bhmod index validate --repo . --base <checkout of main> --author <you> --packages <folder with the .bhmod>`.
+  `bhmod index validate --repo . --base <checkout of dev> --author <you> --packages <folder with the .bhmod>`.
 - CI comments on the pull request. If it fails, fix the entry or the package and push again.
-- Mods that ask for `native`, new permissions, or (new mods) `net-http` wait for a maintainer's security review.
+- Every new mod, every version with `native`, and every update that adds a permission waits for a maintainer's
+  security review.
 
 Changes to the tooling, workflows or README: open an issue first. By contributing to this repo you agree that your
 entry is released under [CC0-1.0](LICENSE). Your mod itself keeps its own license.
