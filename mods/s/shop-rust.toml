@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/shop-rust"
 tags = ["economy", "chat", "rust"]
 draft = false
 
+[i18n.tr]
+name = "Mağaza (Rust)"
+description = "/buy, Luau economy modundaki jetonlarla öder: Lua servisini çağıran bir Rust WASM modu."
+
+[i18n.ru]
+name = "Магазин (Rust)"
+description = "/buy платит монетами из Lua-мода economy: WASM-мод на Rust вызывает Lua-сервис."
+
+[i18n.kk]
+name = "Дүкен (Rust)"
+description = "/buy Luau economy модындағы монеталармен төлейді: Lua қызметін шақыратын Rust WASM моды."
+
 [[versions]]
 version = "0.1.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/shop-rust-0.1.0.bhmod"

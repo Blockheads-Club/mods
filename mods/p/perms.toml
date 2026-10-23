@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/perms"
 tags = ["admin", "service", "luau"]
 draft = false
 
+[i18n.tr]
+name = "İzinler"
+description = "Oyuncular için adlandırılmış izin düğümleri (/perm); diğer modlara `permissions` servisi olarak sunulur."
+
+[i18n.ru]
+name = "Права"
+description = "Именованные права для игроков (/perm); другим модам доступны как сервис `permissions`."
+
+[i18n.kk]
+name = "Рұқсаттар"
+description = "Ойыншыларға арналған аталған рұқсаттар (/perm); басқа модтарға `permissions` қызметі ретінде беріледі."
+
 [[versions]]
 version = "1.0.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/perms-1.0.0.bhmod"

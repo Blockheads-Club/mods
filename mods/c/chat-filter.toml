@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/chat-filter
 tags = ["chat", "moderation", "luau"]
 draft = false
 
+[i18n.tr]
+name = "Sohbet filtresi"
+description = "Sohbette spam bağlantılarını engeller ve kaba sözleri yıldızlar. Olay öncelikleri ve iptal için örnek Luau modu."
+
+[i18n.ru]
+name = "Фильтр чата"
+description = "Блокирует спам-ссылки и маскирует грубые слова в чате. Пример мода на Luau: приоритеты событий и отмена."
+
+[i18n.kk]
+name = "Чат сүзгісі"
+description = "Чаттағы спам сілтемелерді бұғаттайды және дөрекі сөздерді жасырады. Оқиға басымдықтары мен болдырмауға арналған Luau үлгі моды."
+
 [[versions]]
 version = "0.1.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/chat-filter-0.1.0.bhmod"

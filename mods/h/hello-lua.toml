@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/hello-lua"
 tags = ["example", "chat", "luau"]
 draft = false
 
+[i18n.tr]
+name = "Merhaba (Lua)"
+description = "/hello komutunu ekler ve katılan oyuncuları selamlar. Örnek Luau modu."
+
+[i18n.ru]
+name = "Привет (Lua)"
+description = "Добавляет /hello и приветствует зашедших игроков. Пример мода на Luau."
+
+[i18n.kk]
+name = "Сәлем (Lua)"
+description = "/hello пәрменін қосады және кірген ойыншыларды қарсы алады. Luau үлгі моды."
+
 [[versions]]
 version = "0.1.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/hello-lua-0.1.0.bhmod"

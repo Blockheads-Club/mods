@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/economy"
 tags = ["economy", "service", "luau"]
 draft = false
 
+[i18n.tr]
+name = "Ekonomi"
+description = "Her oyuncuya jeton: /balance, /pay ve diğer modların kullanabileceği bir ekonomi servisi."
+
+[i18n.ru]
+name = "Экономика"
+description = "Монеты для каждого игрока: /balance, /pay и сервис economy для других модов."
+
+[i18n.kk]
+name = "Экономика"
+description = "Әр ойыншыға монеталар: /balance, /pay және басқа модтар қолдана алатын economy қызметі."
+
 [[versions]]
 version = "1.0.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/economy-1.0.0.bhmod"

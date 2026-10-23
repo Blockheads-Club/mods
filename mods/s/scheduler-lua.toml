@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/scheduler-l
 tags = ["utility", "chat", "luau"]
 draft = false
 
+[i18n.tr]
+name = "Geri sayım ve hatırlatıcılar"
+description = "/countdown ve /remind komutlarını ve düzenli bir ipucu ekler. Zamanlayıcı için örnek Luau modu."
+
+[i18n.ru]
+name = "Обратный отсчёт и напоминания"
+description = "Добавляет /countdown и /remind и периодическую подсказку. Пример мода на Luau для планировщика."
+
+[i18n.kk]
+name = "Кері санақ және ескертулер"
+description = "/countdown және /remind пәрмендерін және мерзімді кеңес қосады. Жоспарлағышқа арналған Luau үлгі моды."
+
 [[versions]]
 version = "0.1.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/scheduler-lua-0.1.0.bhmod"

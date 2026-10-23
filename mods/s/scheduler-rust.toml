@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/scheduler-r
 tags = ["utility", "chat", "rust"]
 draft = false
 
+[i18n.tr]
+name = "Geri sayım ve hatırlatıcılar (Rust)"
+description = "/countdown ve /remind komutlarını ve düzenli bir ipucu ekler. Örnek WASM modu (scheduler-lua'nın Rust ikizi)."
+
+[i18n.ru]
+name = "Обратный отсчёт и напоминания (Rust)"
+description = "Добавляет /countdown и /remind и периодическую подсказку. Пример WASM-мода (Rust-близнец scheduler-lua)."
+
+[i18n.kk]
+name = "Кері санақ және ескертулер (Rust)"
+description = "/countdown және /remind пәрмендерін және мерзімді кеңес қосады. Үлгі WASM моды (scheduler-lua-ның Rust егізі)."
+
 [[versions]]
 version = "0.1.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/scheduler-rust-0.1.0.bhmod"

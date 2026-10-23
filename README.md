@@ -39,6 +39,10 @@ owners = ["your-github-name"]    # who may send new versions
 repo = "https://github.com/you/my-mod"
 tags = ["chat", "admin"]
 
+[i18n.tr]                        # optional: translated name and/or description (tr, ru, kk ...)
+name = "Benim Modum"
+description = "Ne yaptığı, bir iki cümleyle."
+
 [[versions]]
 version = "1.0.0"
 url = "https://github.com/you/my-mod/releases/download/v1.0.0/my-mod-1.0.0.bhmod"
@@ -51,6 +55,10 @@ published = 2026-10-21
 ```
 
 4. Open a pull request. CI comments with the result and the permissions your mod asks for.
+
+The `name` and `description` above are English; the optional `[i18n.<language>]` tables are shown to readers of
+that language, which fall back to English for anything missing. You may change them any time (they are not part of a
+version).
 
 **New version:** add another `[[versions]]` block at the end. **Withdraw a version:** add `yanked = true` to it.
 Full format: [`index-entry.schema.json`](https://github.com/Blockheads-Club/mod-sdk/blob/dev/schema/index-entry.schema.json).

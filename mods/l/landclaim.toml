@@ -6,6 +6,18 @@ repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/landclaim"
 tags = ["building", "protection", "luau"]
 draft = false
 
+[i18n.tr]
+name = "Arazi sahiplenme"
+description = "Jetonlarla 16x16'lık parseller satın al (/claim, /unclaim); orada yalnızca sahipleri inşa edebilir veya kazabilir."
+
+[i18n.ru]
+name = "Участки земли"
+description = "Покупайте участки 16x16 за монеты (/claim, /unclaim); строить и копать там могут только владельцы."
+
+[i18n.kk]
+name = "Жер иелену"
+description = "16x16 телімдерді монетамен сатып алыңыз (/claim, /unclaim); онда тек иелері салып не қаза алады."
+
 [[versions]]
 version = "1.0.0"
 url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/landclaim-1.0.0.bhmod"
