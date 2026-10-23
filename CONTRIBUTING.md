@@ -9,7 +9,8 @@ Thanks for sharing your mod! The steps are in the [README](README.md#-submit-a-m
   `bhmod index validate --repo . --base <checkout of dev> --author <you> --packages <folder with the .bhmod>`.
 - CI comments on the pull request. If it fails, fix the entry or the package and push again.
 - Every new mod, every version with `native`, and every update that adds a permission waits for a maintainer's
-  security review.
+  security review. For native mods read [Native mods](README.md#native-mods) first: the source must be public and
+  reproducible, and only the `armeabi-v7a` library loads.
 
 Changes to the tooling, workflows or README: open an issue first. By contributing to this repo you agree that your
 entry is released under [CC0-1.0](LICENSE). Your mod itself keeps its own license.

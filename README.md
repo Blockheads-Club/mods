@@ -95,6 +95,15 @@ asks for `native` (unsandboxed code: native hooks, `.so` files, JVM), and when a
 New mods also get `new-mod`. Updates that keep the same permissions and use no native code need no review, only the
 usual owner check.
 
+### Native mods
+A mod with `permissions.native = true` can hook the game itself (`.so` files in `client/native/armeabi-v7a/`, or a JVM
+jar). The game is 32-bit ARM only: a library for another ABI never loads (the check warns). What the review looks at:
+the source is public and builds to the file you submit (say how in the pull request), the hooks do only what the
+description says, and nothing phones home. What the players see: a red warning and a button that says they understand;
+a server can never send native code to a client: a client loads native code **only** from a package it installed from
+this list (same `sha256`) and confirmed. So a new version of a native mod reaches players only through a new, reviewed
+index entry. See [`docs/native.md`](https://github.com/Blockheads-Club/mod-sdk/blob/dev/docs/native.md) for the API.
+
 ---
 
 ## 🧪 Test locally
