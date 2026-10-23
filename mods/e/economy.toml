@@ -1,0 +1,17 @@
+id = "economy"
+name = "Economy"
+description = "Coins for every player: /balance, /pay and an economy service other mods can use."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/economy"
+tags = ["economy", "service", "luau"]
+draft = false
+
+[[versions]]
+version = "1.0.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/economy-1.0.0.bhmod"
+sha256 = "cb0420c30794366e801cfaefacb5eaa3df80e0b8390182255997a66ac7b5b88c"
+size = 2379
+sides = ["server"]
+api = "^0.2"
+permissions = {}
+published = 2026-10-23

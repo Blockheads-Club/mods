@@ -1,0 +1,17 @@
+id = "scheduler-rust"
+name = "Countdown and reminders (Rust)"
+description = "Adds /countdown and /remind and a periodic tip. Example WASM mod (Rust twin of scheduler-lua)."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/scheduler-rust"
+tags = ["utility", "chat", "rust"]
+draft = false
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/scheduler-rust-0.1.0.bhmod"
+sha256 = "2a858990018ad30a5ff2278c00769162685e0b6e876966bb1545690b4283f35b"
+size = 58507
+sides = ["server"]
+api = "^0.2"
+permissions = { players = ["chat"] }
+published = 2026-10-23

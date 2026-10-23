@@ -1,0 +1,17 @@
+id = "perms"
+name = "Permissions"
+description = "Named permission nodes for players (/perm), offered to other mods as the `permissions` service."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/perms"
+tags = ["admin", "service", "luau"]
+draft = false
+
+[[versions]]
+version = "1.0.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/perms-1.0.0.bhmod"
+sha256 = "c2d0a32d8cf1989c7d4e1acb8efabb5e339c9e6554edd4b28eb2fb1c62d4e471"
+size = 1972
+sides = ["server"]
+api = "^0.2"
+permissions = {}
+published = 2026-10-23

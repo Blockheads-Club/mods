@@ -1,0 +1,19 @@
+id = "landclaim"
+name = "Land claim"
+description = "Buy 16x16 plots with coins (/claim, /unclaim); only owners can build or dig there."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/landclaim"
+tags = ["building", "protection", "luau"]
+draft = false
+
+[[versions]]
+version = "1.0.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/landclaim-1.0.0.bhmod"
+sha256 = "48c635dd0128a2fe815b9c098030f36de4b46a4592402417ee9343223d816068"
+size = 1950
+sides = ["server"]
+api = "^0.2"
+depends = { economy = "^1" }
+soft-depends = { perms = "^1" }
+permissions = {}
+published = 2026-10-23

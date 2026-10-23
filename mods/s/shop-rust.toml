@@ -1,0 +1,18 @@
+id = "shop-rust"
+name = "Shop (Rust)"
+description = "/buy pays with coins from the Luau economy mod: a Rust WASM mod calling a Lua service."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/shop-rust"
+tags = ["economy", "chat", "rust"]
+draft = false
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/shop-rust-0.1.0.bhmod"
+sha256 = "f589c36c964bdf35fafcdef4aeebca53ce07006015f1eb54f91ca6ccb1404a52"
+size = 31191
+sides = ["server"]
+api = "^0.2"
+depends = { economy = "^1" }
+permissions = {}
+published = 2026-10-23

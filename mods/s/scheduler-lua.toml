@@ -1,0 +1,17 @@
+id = "scheduler-lua"
+name = "Countdown and reminders"
+description = "Adds /countdown and /remind and a periodic tip. Example Luau mod for the scheduler."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/scheduler-lua"
+tags = ["utility", "chat", "luau"]
+draft = false
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/scheduler-lua-0.1.0.bhmod"
+sha256 = "ddaaa95811674dcaafe049892a8de18cb55e0cc4f51f3dd109cc8f6206a49848"
+size = 1746
+sides = ["server"]
+api = "^0.1"
+permissions = { players = ["chat"] }
+published = 2026-10-23

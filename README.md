@@ -13,9 +13,9 @@
 ---
 
 ## 🚀 Project Status
-**Current Status:** Not open yet (milestone M4). The two entries in `mods/` are **drafts** with fake download links,
-used to test the tools. Servers and clients can't load mods yet; see the
-[mod SDK](https://github.com/Blockheads-Club/mod-sdk) for what works today.
+**Current Status:** Open. The ten official example mods from the [mod SDK](https://github.com/Blockheads-Club/mod-sdk)
+are the first entries (release `mods-2026.10.23` of the SDK repo); each passed a security review. See the SDK docs
+for what servers and clients can load today.
 
 Every mod has one file here: `mods/<first letter>/<id>.toml`. CI checks each pull request, a maintainer reviews
 it, and on merge into `dev` the list is published as `index.json` at
@@ -94,12 +94,12 @@ You need the `bhmod` tool (`cargo install --git https://github.com/Blockheads-Cl
 of the SDK).
 
 ```bash
-scripts/check-local.sh            # checks the drafts against testdata/packages and builds _site/index.json
+scripts/check-local.sh            # checks every entry against testdata/packages and builds _site/index.json
 BHMOD=../mod-sdk/target/debug/bhmod scripts/check-local.sh
 ```
 
-Local mode never downloads: packages come from `testdata/packages/<id>-<version>.bhmod` (`--packages`), and drafts
-are included. The test packages are the SDK's `hello-lua` and `hello-rust` examples (MIT OR Apache-2.0).
+Local mode never downloads: packages come from `testdata/packages/<id>-<version>.bhmod` (`--packages`). The test
+packages are the official example mods, byte for byte the files behind the `url`s (MIT OR Apache-2.0).
 
 ---
 

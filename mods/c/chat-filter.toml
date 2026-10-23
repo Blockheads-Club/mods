@@ -1,0 +1,17 @@
+id = "chat-filter"
+name = "Chat filter"
+description = "Blocks spam links and masks rude words in chat. Example Luau mod for event priorities and cancellation."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/chat-filter"
+tags = ["chat", "moderation", "luau"]
+draft = false
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/chat-filter-0.1.0.bhmod"
+sha256 = "75ad57615eb2da03e64957ce95d5d8cce4d84e5fd1bca662e056af94fa92050e"
+size = 1853
+sides = ["server"]
+api = "^0.1"
+permissions = {}
+published = 2026-10-23

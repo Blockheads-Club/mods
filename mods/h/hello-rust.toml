@@ -1,19 +1,17 @@
-# DRAFT placeholder: the URL is fake until mod-sdk publishes a release. The sha256 and size match
-# testdata/packages/hello-rust-0.1.0.bhmod, so the tooling can be tested locally (see README, "Test locally").
 id = "hello-rust"
 name = "Hello (Rust)"
-description = "Adds /hello and greets players who join. Example WASM component mod from the SDK."
+description = "Adds /hello and greets players who join. Example WASM component mod (Rust twin of hello-lua)."
 owners = ["Blockheads-Club"]
-repo = "https://github.com/Blockheads-Club/mod-sdk"
-tags = ["example", "chat"]
-draft = true
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/hello-rust"
+tags = ["example", "chat", "rust"]
+draft = false
 
 [[versions]]
 version = "0.1.0"
-url = "https://example.invalid/TODO/hello-rust-0.1.0.bhmod"
-sha256 = "07f97f732e36c05beb0f162e974086e7308a118f8572ad84ae63f73c586f560c"
-size = 29341
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.23/hello-rust-0.1.0.bhmod"
+sha256 = "96574b9b91edd678d3e145c5f41264ba39aad636d04029e0442d14e2ec33a9c3"
+size = 34529
 sides = ["server"]
-api = "^0.1"
-permissions = {}
-published = 2026-10-21
+api = "^0.2"
+permissions = { players = ["chat"] }
+published = 2026-10-23
