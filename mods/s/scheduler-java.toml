@@ -1,0 +1,29 @@
+id = "scheduler-java"
+name = "Countdown and reminders (Java)"
+description = "Adds /countdown and /remind and a periodic tip. Java twin of scheduler-lua."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/scheduler-java"
+tags = ["utility", "chat", "java"]
+draft = false
+
+[i18n.tr]
+name = "Geri sayım ve hatırlatıcılar (Java)"
+description = "/countdown ve /remind komutlarını ve düzenli bir ipucu ekler. scheduler-lua'nın Java ikizi."
+
+[i18n.ru]
+name = "Обратный отсчёт и напоминания (Java)"
+description = "Добавляет /countdown и /remind и периодическую подсказку. Java-близнец scheduler-lua."
+
+[i18n.kk]
+name = "Кері санақ және ескертулер (Java)"
+description = "/countdown және /remind пәрмендерін және мерзімді кеңес қосады. scheduler-lua-ның Java егізі."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/scheduler-java-0.1.0.bhmod"
+sha256 = "d0f638702cf93f3b36fb70b6ec3c740a5d21f374fdac8ca881ca1a819295a70c"
+size = 3659
+sides = ["server"]
+api = "^0.1"
+permissions = { native = true, players = ["chat"] }
+published = 2026-10-25

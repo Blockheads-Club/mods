@@ -1,0 +1,30 @@
+id = "shop-java"
+name = "Shop (Java)"
+description = "/buy pays with coins from the Luau economy mod: a Java mod calling a Lua service."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/shop-java"
+tags = ["economy", "chat", "java"]
+draft = false
+
+[i18n.tr]
+name = "Mağaza (Java)"
+description = "/buy, Luau economy modundaki jetonlarla öder: Lua servisini çağıran bir Java modu."
+
+[i18n.ru]
+name = "Магазин (Java)"
+description = "/buy платит монетами из Lua-мода economy: Java-мод вызывает Lua-сервис."
+
+[i18n.kk]
+name = "Дүкен (Java)"
+description = "/buy Luau economy модындағы монеталармен төлейді: Lua қызметін шақыратын Java моды."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/shop-java-0.1.0.bhmod"
+sha256 = "43b15e1bc15cb48e058f8657dae36d8ff2f2fd7a9abdfd8576e409916b865e7a"
+size = 3017
+sides = ["server"]
+api = "^0.2"
+depends = { economy = "^1" }
+permissions = { native = true }
+published = 2026-10-25

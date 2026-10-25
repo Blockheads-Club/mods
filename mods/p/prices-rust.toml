@@ -1,0 +1,30 @@
+id = "prices-rust"
+name = "Price check (Rust)"
+description = "Players type /price <item> and the client asks the server. Rust twin of the client half of prices-lua."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/prices-rust"
+tags = ["example", "utility", "rust"]
+draft = false
+
+[i18n.tr]
+name = "Fiyat sorgusu (Rust)"
+description = "Oyuncular /price <eşya> yazar, istemci sunucuya sorar. prices-lua'nın istemci yarısının Rust ikizi."
+
+[i18n.ru]
+name = "Проверка цен (Rust)"
+description = "Игрок вводит /price <предмет>, клиент спрашивает сервер. Rust-близнец клиентской половины prices-lua."
+
+[i18n.kk]
+name = "Баға тексеру (Rust)"
+description = "Ойыншы /price <зат> жазады, клиент серверден сұрайды. prices-lua клиент жартысының Rust егізі."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/prices-rust-0.1.0.bhmod"
+sha256 = "a628028f7b6ea1caff8b3f2a64acb031a9f9aa9750c5191206a7c6153eae54c6"
+size = 43815
+sides = ["client"]
+client-required = true
+api = "^0.3.1"
+permissions = { channels = true }
+published = 2026-10-25

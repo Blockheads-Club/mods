@@ -1,0 +1,30 @@
+id = "weapon-skins"
+name = "Weapon skins"
+description = "Two held-tool skins for the PC and Android clients: a golden spade and a flame pickaxe. Players need the mod; example content mod."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/weapon-skins"
+tags = ["example", "cosmetics", "content"]
+draft = false
+
+[i18n.tr]
+name = "Silah görünümleri"
+description = "PC ve Android istemcileri için iki el aleti görünümü: altın kürek ve alevli kazma. Oyuncuların modu kurması gerekir; örnek içerik modu."
+
+[i18n.ru]
+name = "Скины оружия"
+description = "Два облика инструментов в руках для клиентов ПК и Android: золотая лопата и огненная кирка. Мод нужен и игрокам; пример контентного мода."
+
+[i18n.kk]
+name = "Қару көріністері"
+description = "PC және Android клиенттеріне арналған қолдағы екі құрал көрінісі: алтын күрек және жалынды кайла. Ойыншыларға мод қажет; үлгі контент моды."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/weapon-skins-0.1.0.bhmod"
+sha256 = "d74b4a09791dfe763ffa0dfd968740c95b4c4300bd845893f19c104a8db423a3"
+size = 2444
+sides = ["client"]
+client-required = true
+api = "^0.3"
+permissions = {}
+published = 2026-10-25

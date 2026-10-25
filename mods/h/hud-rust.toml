@@ -1,0 +1,30 @@
+id = "hud-rust"
+name = "HUD demo (Rust)"
+description = "Shows a coin counter, a position text, a notice and a dialog. Example client mod for the ui interface (Rust twin of hud-lua)."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/hud-rust"
+tags = ["example", "ui", "rust"]
+draft = false
+
+[i18n.tr]
+name = "HUD örneği (Rust)"
+description = "Jeton sayacı, konum yazısı, bir bildirim ve bir diyalog gösterir. Arayüz için örnek istemci modu (hud-lua'nın Rust ikizi)."
+
+[i18n.ru]
+name = "Демо HUD (Rust)"
+description = "Показывает счётчик монет, текст с позицией, уведомление и диалог. Пример клиентского мода для интерфейса (Rust-близнец hud-lua)."
+
+[i18n.kk]
+name = "HUD үлгісі (Rust)"
+description = "Монета санағышын, орын мәтінін, хабарландыру мен диалогты көрсетеді. Интерфейске арналған клиент үлгі моды (hud-lua-ның Rust егізі)."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/hud-rust-0.1.0.bhmod"
+sha256 = "3cc50ab2b149b706865c0c1e676524cb34133262b6ebfe4d7655d90a93ca0002"
+size = 34406
+sides = ["client"]
+client-required = true
+api = "^0.3"
+permissions = {}
+published = 2026-10-25

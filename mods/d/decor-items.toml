@@ -1,0 +1,30 @@
+id = "decor-items"
+name = "Decor items"
+description = "Two new items (brass lamp, wall plaque) and a warm brick variant block. Type /decor to get the items and /warm to turn the block under you into a warm brick. Players need the mod; example content mod."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/decor-items"
+tags = ["example", "content", "items", "blocks"]
+draft = false
+
+[i18n.tr]
+name = "Dekor eşyaları"
+description = "İki yeni eşya (pirinç lamba, duvar levhası) ve sıcak tuğla blok çeşidi. Eşyaları almak için /decor, altındaki bloğu sıcak tuğlaya çevirmek için /warm yaz. Oyuncuların modu kurması gerekir; örnek içerik modu."
+
+[i18n.ru]
+name = "Предметы декора"
+description = "Два новых предмета (латунная лампа, настенная табличка) и вариант тёплого кирпича. /decor выдаёт предметы, /warm превращает блок под вами в тёплый кирпич. Мод нужен и игрокам; пример контентного мода."
+
+[i18n.kk]
+name = "Сән бұйымдары"
+description = "Екі жаңа зат (жез шам, қабырға тақтайшасы) және жылы кірпіш блогы. Заттарды алу үшін /decor, астыңыздағы блокты жылы кірпішке айналдыру үшін /warm жазыңыз. Ойыншыларға мод қажет; үлгі контент моды."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/decor-items-0.1.0.bhmod"
+sha256 = "8309a436760ae99af0b662bada196464bdbc7b7fc9c10c60cf8f8f7d973b4b61"
+size = 3418
+sides = ["server", "client"]
+client-required = true
+api = "^0.3.2"
+permissions = {}
+published = 2026-10-25

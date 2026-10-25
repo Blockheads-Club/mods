@@ -1,0 +1,30 @@
+id = "prices-lua"
+name = "Price check (Lua)"
+description = "Players type /price <item> and the client asks the server. Example of a service that clients may call (Luau)."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/prices-lua"
+tags = ["example", "utility", "luau"]
+draft = false
+
+[i18n.tr]
+name = "Fiyat sorgusu (Lua)"
+description = "Oyuncular /price <eşya> yazar, istemci sunucuya sorar. İstemcilerin çağırabildiği bir servis için örnek (Luau)."
+
+[i18n.ru]
+name = "Проверка цен (Lua)"
+description = "Игрок вводит /price <предмет>, клиент спрашивает сервер. Пример сервиса, который могут вызывать клиенты (Luau)."
+
+[i18n.kk]
+name = "Баға тексеру (Lua)"
+description = "Ойыншы /price <зат> жазады, клиент серверден сұрайды. Клиенттер шақыра алатын қызметтің үлгісі (Luau)."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/prices-lua-0.1.0.bhmod"
+sha256 = "530c5f45419a545885981f94c119b72e6adec7562769830e74691bfe43fb586f"
+size = 2378
+sides = ["server", "client"]
+client-required = true
+api = "^0.3.1"
+permissions = { channels = true }
+published = 2026-10-25

@@ -1,0 +1,30 @@
+id = "cosmetics-hats"
+name = "Hat and hair set"
+description = "Three cosmetics for every player: a gold crown, a party hat and ember fringe. Type /hat and /hair to wear them. Players need the mod; example content mod."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/cosmetics-hats"
+tags = ["example", "cosmetics", "content"]
+draft = false
+
+[i18n.tr]
+name = "Şapka ve saç seti"
+description = "Her oyuncu için üç kozmetik: altın bir taç, bir parti şapkası ve kor rengi perçem. Takmak için /hat ve /hair yaz. Oyuncuların modu kurması gerekir; örnek içerik modu."
+
+[i18n.ru]
+name = "Набор шляп и причёсок"
+description = "Три украшения для каждого игрока: золотая корона, праздничный колпак и огненная чёлка. Наденьте их командами /hat и /hair. Мод нужен и игрокам; пример контентного мода."
+
+[i18n.kk]
+name = "Бас киім мен шаш жинағы"
+description = "Әр ойыншыға үш әшекей: алтын тәж, мерекелік қалпақ және шоқ түстес шаш. Кию үшін /hat және /hair жазыңыз. Ойыншыларға мод қажет; үлгі контент моды."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/cosmetics-hats-0.1.0.bhmod"
+sha256 = "dfc3b193c6ef58a60ebe0f9cf4e4cf7a16554119f7c749c2549c6d3abb787e4d"
+size = 4004
+sides = ["server", "client"]
+client-required = true
+api = "^0.3"
+permissions = {}
+published = 2026-10-25

@@ -1,0 +1,29 @@
+id = "hello-java"
+name = "Hello (Java)"
+description = "Adds /hello and greets players who join. Example Java mod."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/hello-java"
+tags = ["example", "chat", "java"]
+draft = false
+
+[i18n.tr]
+name = "Merhaba (Java)"
+description = "/hello komutunu ekler ve katılan oyuncuları selamlar. Örnek Java modu."
+
+[i18n.ru]
+name = "Привет (Java)"
+description = "Добавляет /hello и приветствует зашедших игроков. Пример мода на Java."
+
+[i18n.kk]
+name = "Сәлем (Java)"
+description = "/hello пәрменін қосады және кірген ойыншыларды қарсы алады. Java үлгі моды."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/hello-java-0.1.0.bhmod"
+sha256 = "338c085378cb2ad0a59065062ed48be23260e9d07fedae88fede955dc920fc08"
+size = 3212
+sides = ["server"]
+api = "^0.1"
+permissions = { native = true, players = ["chat"] }
+published = 2026-10-25

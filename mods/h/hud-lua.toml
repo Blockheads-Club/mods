@@ -1,0 +1,30 @@
+id = "hud-lua"
+name = "HUD demo (Lua)"
+description = "Shows a coin counter, a position text, a notice and a dialog. Example client mod for the ui interface (Luau)."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/hud-lua"
+tags = ["example", "ui", "luau"]
+draft = false
+
+[i18n.tr]
+name = "HUD örneği (Lua)"
+description = "Jeton sayacı, konum yazısı, bir bildirim ve bir diyalog gösterir. Arayüz için örnek istemci modu (Luau)."
+
+[i18n.ru]
+name = "Демо HUD (Lua)"
+description = "Показывает счётчик монет, текст с позицией, уведомление и диалог. Пример клиентского мода для интерфейса (Luau)."
+
+[i18n.kk]
+name = "HUD үлгісі (Lua)"
+description = "Монета санағышын, орын мәтінін, хабарландыру мен диалогты көрсетеді. Интерфейске арналған клиент үлгі моды (Luau)."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/hud-lua-0.1.0.bhmod"
+sha256 = "a8b4f1c4b8c3459f9593e6d02305bf7be2afad9631cf5e24c7f14f7423565fe6"
+size = 1475
+sides = ["client"]
+client-required = true
+api = "^0.3"
+permissions = {}
+published = 2026-10-25

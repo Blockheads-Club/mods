@@ -1,0 +1,29 @@
+id = "chat-filter-java"
+name = "Chat filter (Java)"
+description = "Blocks spam links and masks rude words in chat. Java twin of the chat-filter example."
+owners = ["Blockheads-Club"]
+repo = "https://github.com/Blockheads-Club/mod-sdk/tree/dev/examples/chat-filter-java"
+tags = ["chat", "moderation", "java"]
+draft = false
+
+[i18n.tr]
+name = "Sohbet filtresi (Java)"
+description = "Sohbette spam bağlantılarını engeller ve kaba sözleri yıldızlar. chat-filter örneğinin Java ikizi."
+
+[i18n.ru]
+name = "Фильтр чата (Java)"
+description = "Блокирует спам-ссылки и маскирует грубые слова в чате. Java-близнец примера chat-filter."
+
+[i18n.kk]
+name = "Чат сүзгісі (Java)"
+description = "Чаттағы спам сілтемелерді бұғаттайды және дөрекі сөздерді жасырады. chat-filter үлгісінің Java егізі."
+
+[[versions]]
+version = "0.1.0"
+url = "https://github.com/Blockheads-Club/mod-sdk/releases/download/mods-2026.10.25/chat-filter-java-0.1.0.bhmod"
+sha256 = "f4d0850422f3dcd37b353879d1005e97c9995d4c0a0da90776428bd910c1183c"
+size = 3715
+sides = ["server"]
+api = "^0.1"
+permissions = { native = true }
+published = 2026-10-25
